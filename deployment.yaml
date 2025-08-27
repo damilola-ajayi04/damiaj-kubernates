@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-z-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-z-app
+  template:
+    metadata:
+      labels:
+        app: demo-z-app
+    spec:
+      containers:
+      - name: demo-z-app
+        image: 998718205665.dkr.ecr.eu-west-2.amazonaws.com/demo-z-app:1.2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
