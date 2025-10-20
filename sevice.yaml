@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-z-app-service
+  name: crm-app-service
 spec:
   selector:
-    app: demo-z-app
+    app: crm-app
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
   type: LoadBalancer

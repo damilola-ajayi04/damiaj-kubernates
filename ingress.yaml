@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: crm-app-ingress
+  namespace: crm-dev
+  labels:
+    app.kubernetes.io/name: crm-app-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: crm-app-dev.damiaj.org
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: crm-app-service
+            port: 
+              number: 8080

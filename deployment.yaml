@@ -1,23 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-z-app
+  name: crm-app
+  namespace: crm-dev
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: demo-z-app
+      app: crm-app
   template:
     metadata:
       labels:
-        app: demo-z-app
+        app: crm-app
     spec:
       containers:
-      - name: demo-z-app
-        image: 998718205665.dkr.ecr.eu-west-2.amazonaws.com/demo-z-app:1.2
+      - name: crm-app
+        image: 998718205665.dkr.ecr.eu-west-2.amazonaws.com/crm-app:1.0
+
         resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "1Gi"
+            cpu: "1000m"
         ports:
-        - containerPort: 80
+        - containerPort: 8080
